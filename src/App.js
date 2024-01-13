@@ -1,5 +1,6 @@
 // App.js
 import React, {useState} from 'react'
+import {VscBold, GoItalic, AiOutlineUnderline} from 'react-icons/all'
 import {
   EditorContainer,
   MainHeading,
@@ -8,40 +9,31 @@ import {
   ListItem,
   Button,
   Textarea,
-} from './styles'
-import {VscBold, GoItalic, AiOutlineUnderline} from 'react-icons/all'
+} from './Styles'
 
 const App = () => {
-  const [boldActive, setBoldActive] = useState(false)
-  const [italicActive, setItalicActive] = useState(false)
-  const [underlineActive, setUnderlineActive] = useState(false)
-  const [text, setText] = useState('')
+  const [styles, setStyles] = useState({
+    bold: false,
+    italic: false,
+    underline: false,
+  })
 
   const handleButtonClick = style => {
-    switch (style) {
-      case 'bold':
-        setBoldActive(!boldActive)
-        break
-      case 'italic':
-        setItalicActive(!italicActive)
-        break
-      case 'underline':
-        setUnderlineActive(!underlineActive)
-        break
-      default:
-        break
-    }
+    setStyles(prevStyles => ({
+      ...prevStyles,
+      [style]: !prevStyles[style],
+    }))
   }
 
   const applyStyle = () => {
     let style = ''
-    if (boldActive) {
+    if (styles.bold) {
       style += 'font-weight: bold; '
     }
-    if (italicActive) {
+    if (styles.italic) {
       style += 'font-style: italic; '
     }
-    if (underlineActive) {
+    if (styles.underline) {
       style += 'text-decoration: underline; '
     }
     return style
@@ -49,7 +41,7 @@ const App = () => {
 
   return (
     <EditorContainer>
-      <MainHeading>Text Editor</MainHeading>
+      <h1>Text Editor</h1>
       <Image
         src="https://your-text-editor-image-url.com/editor.png"
         alt="text editor"
@@ -58,7 +50,7 @@ const App = () => {
         <ListItem>
           <Button
             data-testid="bold"
-            active={boldActive}
+            active={styles.bold}
             onClick={() => handleButtonClick('bold')}
           >
             <VscBold size={25} />
@@ -67,7 +59,7 @@ const App = () => {
         <ListItem>
           <Button
             data-testid="italic"
-            active={italicActive}
+            active={styles.italic}
             onClick={() => handleButtonClick('italic')}
           >
             <GoItalic size={25} />
@@ -76,19 +68,14 @@ const App = () => {
         <ListItem>
           <Button
             data-testid="underline"
-            active={underlineActive}
+            active={styles.underline}
             onClick={() => handleButtonClick('underline')}
           >
             <AiOutlineUnderline size={25} />
           </Button>
         </ListItem>
       </UnorderedList>
-      <Textarea
-        style={{...applyStyle()}}
-        value={text}
-        onChange={e => setText(e.target.value)}
-        placeholder="Type here..."
-      />
+      <Textarea style={{...applyStyle()}} placeholder="Type here..." />
     </EditorContainer>
   )
 }
