@@ -29,7 +29,8 @@ export const ListItem = styled.li`
 `
 
 export const Button = styled.button`
-  background-color: ${props => (props.active ? '#faff00' : '#f1f5f9')};
+  color: ${props => props.color};
+  color: ${props => (props.active ? '#faff00' : '#f1f5f9')};
   margin: 5px;
   padding: 5px;
   border: none;

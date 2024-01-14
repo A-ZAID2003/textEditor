@@ -50,6 +50,7 @@ const App = () => {
       <UnorderedList>
         <ListItem>
           <Button
+            color="#f1f5f9"
             data-testid="bold"
             active={styles.bold}
             onClick={() => handleButtonClick('bold')}
