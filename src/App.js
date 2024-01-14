@@ -1,6 +1,7 @@
-// App.js
 import React, {useState} from 'react'
-import {VscBold, GoItalic, AiOutlineUnderline} from 'react-icons/all'
+import {VscBold} from 'react-icons/vsc'
+import {GoItalic} from 'react-icons/go'
+import {AiOutlineUnderline} from 'react-icons/ai'
 import {
   EditorContainer,
   MainHeading,
@@ -28,7 +29,7 @@ const App = () => {
   const applyStyle = () => {
     let style = ''
     if (styles.bold) {
-      style += 'font-weight: bold; '
+      style += 'font-weight: normal; ' // If bold is active, set normal font-weight
     }
     if (styles.italic) {
       style += 'font-style: italic; '
@@ -42,8 +43,8 @@ const App = () => {
   return (
     <EditorContainer>
       <h1>Text Editor</h1>
-      <Image
-        src="https://your-text-editor-image-url.com/editor.png"
+      <img
+        src="https://assets.ccbp.in/frontend/react-js/text-editor-img.png"
         alt="text editor"
       />
       <UnorderedList>

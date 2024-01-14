@@ -42,4 +42,5 @@ export const Textarea = styled.textarea`
   margin: 10px;
   font-size: 16px;
   padding: 5px;
+  ${props => props.style}
 `
