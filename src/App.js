@@ -29,7 +29,9 @@ const App = () => {
   const applyStyle = () => {
     let style = ''
     if (styles.bold) {
-      style += 'font-weight: normal; ' // If bold is active, set normal font-weight
+      style += 'font-weight: bold; '
+    } else {
+      style += 'font-weight: normal; '
     }
     if (styles.italic) {
       style += 'font-style: italic; '
@@ -42,8 +44,8 @@ const App = () => {
 
   return (
     <EditorContainer>
-      <h1>Text Editor</h1>
-      <img
+      <MainHeading>Text Editor</MainHeading>
+      <Image
         src="https://assets.ccbp.in/frontend/react-js/text-editor-img.png"
         alt="text editor"
       />
