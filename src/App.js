@@ -27,19 +27,13 @@ const App = () => {
   }
 
   const applyStyle = () => {
-    let style = ''
-    if (styles.bold) {
-      style += 'font-weight: bold; '
-    } else {
-      style += 'font-weight: normal; '
+    const styleObj = {
+      fontWeight: styles.bold ? 'bold' : 'normal',
+      fontStyle: styles.italic ? 'italic' : 'normal',
+      textDecoration: styles.underline ? 'underline' : 'none',
     }
-    if (styles.italic) {
-      style += 'font-style: italic; '
-    }
-    if (styles.underline) {
-      style += 'text-decoration: underline; '
-    }
-    return style
+
+    return styleObj
   }
 
   return (
@@ -79,7 +73,7 @@ const App = () => {
           </Button>
         </ListItem>
       </UnorderedList>
-      <Textarea style={{...applyStyle()}} placeholder="Type here..." />
+      <Textarea style={applyStyle()} placeholder="Type here..." />
     </EditorContainer>
   )
 }
